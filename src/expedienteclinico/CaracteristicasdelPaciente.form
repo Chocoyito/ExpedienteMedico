@@ -10,6 +10,10 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="grupoBotonAlergias">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="grupoBotonDesayuno">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="grupoBotonEjercicios">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -40,9 +44,9 @@
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="botonCancelar" min="-2" pref="83" max="-2" attributes="0"/>
+                      <Component id="botonCancelar" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="botonConfirmar" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonConfirmar" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jPanel3" max="32767" attributes="0"/>
@@ -66,12 +70,13 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -84,12 +89,12 @@
                   </Group>
                   <Component id="jPanel6" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="botonConfirmar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonConfirmar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="botonCancelar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -223,7 +228,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Incapacidad:"/>
+            <Property name="text" type="java.lang.String" value="&#xbf;Tiene alguna incapacidad?"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="botonIncapacidadSi">
@@ -244,7 +249,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Alergias:"/>
+            <Property name="text" type="java.lang.String" value="&#xbf;Alguna alergia?"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="botonAlergiasSi">
@@ -254,9 +259,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Si"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAlergiasSiActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="botonAlergiasNo">
           <Properties>
@@ -342,6 +344,7 @@
                                   <Component id="botonEjercicioNo" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace pref="260" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -350,23 +353,24 @@
                           <Component id="horasDormirText" min="-2" pref="33" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel15" min="-2" pref="43" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="religionText" min="-2" pref="100" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" attributes="0">
                           <Component id="botonDesayunoSi" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="botonDesayunoNo" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <Component id="religionText" min="-2" pref="100" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -405,32 +409,44 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ejercicio: (&#xbf;Suele hacer?)"/>
+            <Property name="text" type="java.lang.String" value="&#xbf;Suele hacer ejercicios?"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="botonEjercicioSi">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="grupoBotonEjercicios"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Si"/>
             <Property name="name" type="java.lang.String" value="botonEjercicioSi" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="botonEjercicioNo">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="grupoBotonEjercicios"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="No"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Desayuno: (&#xbf;Tiende a Desayunar?)"/>
+            <Property name="text" type="java.lang.String" value="&#xbf;Tiende a desayunar?"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="botonDesayunoSi">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="grupoBotonDesayuno"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Si"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="botonDesayunoNo">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="grupoBotonDesayuno"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="No"/>
           </Properties>
         </Component>
@@ -535,9 +551,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="alturaText">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alturaTextActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -552,11 +565,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Regresar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCancelarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonConfirmar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirmar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonConfirmarActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel6">
       <Properties>

@@ -9,8 +9,7 @@ package expedienteclinico;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -19,7 +18,7 @@ import java.util.logging.Logger;
 public class Conexion {
     public static Connection getConexion(){
         String conexionURL = "jdbc:sqlserver://localhost:1433;"
-                + "database = ExpedienteClinico;"
+                + "databasename = ExpedienteClinico;"
                 + "user = sa;"
                 + "password = 1234567890;"
                 + "loginTimeOut = 30;";

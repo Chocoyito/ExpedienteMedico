@@ -119,6 +119,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel1.setText("Expediente Clinico");
 
         botonCitasMedicas.setText("Citas medicas");
+        botonCitasMedicas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCitasMedicasActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Hora");
 
@@ -200,16 +205,23 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         // TODO add your handling code here:
-        
+        cerrarVentana();
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonCrearExpedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearExpedienteActionPerformed
         // TODO add your handling code here:
-        CaracteristicasdelPaciente siguienteVentana = new CaracteristicasdelPaciente();
+        CreacionExpediente siguienteVentana = new CreacionExpediente();
         siguienteVentana.setVisible(true);
         dispose();
         // cerrarVentana();
     }//GEN-LAST:event_botonCrearExpedienteActionPerformed
+
+    private void botonCitasMedicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCitasMedicasActionPerformed
+        // TODO add your handling code here:
+        ConsultarCita consultarCita = new ConsultarCita();
+        consultarCita.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonCitasMedicasActionPerformed
     
 
     /**

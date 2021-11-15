@@ -145,7 +145,7 @@ public class ConsultarCita extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "id", "Nombre", "Telefono", "Medico", "Fecha actual", "Prox. Consulta"
+                "id", "Medico", "Fecha actual", "Prox. Consulta", "Nombre", "Telefono"
             }
         ) {
             Class[] types = new Class [] {
@@ -161,6 +161,11 @@ public class ConsultarCita extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tablaCita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaCitaMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(tablaCita);
@@ -275,6 +280,10 @@ public class ConsultarCita extends javax.swing.JFrame {
             System.out.println(e.toString());
         }
     }//GEN-LAST:event_btnGuardarCitaActionPerformed
+
+    private void tablaCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCitaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaCitaMouseClicked
 
     /**
      * @param args the command line arguments

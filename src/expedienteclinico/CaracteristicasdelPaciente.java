@@ -4,6 +4,12 @@
  */
 package expedienteclinico;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Tito
@@ -47,7 +53,7 @@ public class CaracteristicasdelPaciente extends javax.swing.JFrame {
         botonAlergiasNo = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        anomaliaAreaText = new javax.swing.JTextArea();
+        observacionesAreaTxt = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         botonEjercicioSi = new javax.swing.JRadioButton();
@@ -180,9 +186,9 @@ public class CaracteristicasdelPaciente extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Observaciones"));
 
-        anomaliaAreaText.setColumns(20);
-        anomaliaAreaText.setRows(5);
-        jScrollPane1.setViewportView(anomaliaAreaText);
+        observacionesAreaTxt.setColumns(20);
+        observacionesAreaTxt.setRows(5);
+        jScrollPane1.setViewportView(observacionesAreaTxt);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -463,19 +469,99 @@ public class CaracteristicasdelPaciente extends javax.swing.JFrame {
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         // TODO add your handling code here:
+        
+        String incapacidad;
+        if (botonIncapacidadSi.isSelected() == true)
+            incapacidad = "Si";
+        else if (botonIncapacidadNo.isSelected() == false)
+            incapacidad = "No";
+        else
+            incapacidad = "No";
+
         String antecedenteHereditario = hereditarioText.getText();
         String antecedentePatologico = patologicosText.getText();
-        String incapacidadSi;
-        String incapacidadNo;
-        String alergiaSi;
-        String alergiaNo;
+
+        String alergia;
+        if (botonAlergiasSi.isSelected() == true)
+            alergia = "Si";
+        else if (botonAlergiasNo.isSelected() == true)
+            alergia = "No";
+        else
+            alergia = "No";
 
         String sangreTipo = tipoSangreText.getText();
+        
+        String ejercicios;
+        if (botonEjercicioSi.isSelected() == true)
+            ejercicios = "Si";
+        else if (botonEjercicioNo.isSelected() == true)
+            ejercicios = "No";
+        else
+            ejercicios = "No";
+
+        String desayuno;
+        if (botonDesayunoSi.isSelected() == true) 
+            desayuno = "Si";
+        else if (botonDesayunoNo.isSelected() == true)
+            desayuno = "No";
+        else
+            desayuno = "No";
+
+        String horasDormir = horasDormirText.getText();
+        String religion = religionText.getText();
+        String observaciones = observacionesAreaTxt.getText();
         String pesoKg = pesoText.getText();
         String alturaMts = alturaText.getText();
-        
 
+        String tabaquismo;
+        if (botonTabaquismoSi.isSelected() == true)
+            tabaquismo = "Si";
+        else if (botonAlcoholismoNo.isSelected() == true)
+            tabaquismo = "No";
+        else
+            tabaquismo = "No";
 
+        String alcoholismo;
+            if (botonAlcoholismoSi.isSelected() == true) 
+                alcoholismo = "Si";
+            else if (botonAlcoholismoNo.isSelected() == true)
+                alcoholismo = "No";
+            else
+                alcoholismo = "No";
+
+        Connection con;
+        PreparedStatement ps;
+
+        try {
+            con = Conexion.getConexion();
+            ps = con.prepareStatement("INSERT INTO Antecedentes(aIncapacidad, aHereditarios, aPatologicos, aAlergias, tipoSangre, eEjercicio, eDesayuno, horasSuenyo, religion, observacion, peso, altura, tabaquismo, alcoholismo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            
+            ps.setString(1, incapacidad);
+            ps.setString(2, antecedenteHereditario);
+            ps.setString(3, antecedentePatologico);
+            ps.setString(4, alergia);
+            ps.setString(5, sangreTipo);
+            ps.setString(6, ejercicios);
+            ps.setString(7, desayuno);            
+            ps.setString(8, horasDormir);
+            ps.setString(9, religion);
+            ps.setString(10, observaciones);
+            ps.setString(11, pesoKg);
+            ps.setString(12, alturaMts);            
+            ps.setString(13, tabaquismo);
+            ps.setString(14, alcoholismo);
+
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Expediente clinico registrado completamente");
+
+            PaginaPrincipal retorno = new PaginaPrincipal();
+            retorno.setVisible(true);
+            dispose();
+
+        } catch (SQLException e) {
+            //TODO: handle exception
+            System.out.println(e.toString());
+        }
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
@@ -522,7 +608,6 @@ public class CaracteristicasdelPaciente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField alturaText;
-    private javax.swing.JTextArea anomaliaAreaText;
     private javax.swing.JRadioButton botonAlcoholismoNo;
     private javax.swing.JRadioButton botonAlcoholismoSi;
     private javax.swing.JRadioButton botonAlergiasNo;
@@ -567,6 +652,7 @@ public class CaracteristicasdelPaciente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea observacionesAreaTxt;
     private javax.swing.JTextField patologicosText;
     private javax.swing.JTextField pesoText;
     private javax.swing.JTextField religionText;

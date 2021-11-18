@@ -101,6 +101,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         botonBuscarExpediente.setText("Buscar expediente");
         botonBuscarExpediente.setAlignmentY(10.0F);
         botonBuscarExpediente.setName("buscarPaciente"); // NOI18N
+        botonBuscarExpediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarExpedienteActionPerformed(evt);
+            }
+        });
 
         botonSalir.setText("Salir del programa");
         botonSalir.setAlignmentY(10.0F);
@@ -222,6 +227,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         consultarCita.setVisible(true);
         dispose();
     }//GEN-LAST:event_botonCitasMedicasActionPerformed
+
+    private void botonBuscarExpedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarExpedienteActionPerformed
+        // TODO add your handling code here:
+        RevisionExpediente buscarExpediente = new RevisionExpediente();
+        buscarExpediente.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonBuscarExpedienteActionPerformed
     
 
     /**

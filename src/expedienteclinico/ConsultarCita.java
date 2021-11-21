@@ -5,6 +5,8 @@
  */
 package expedienteclinico;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -29,6 +31,10 @@ public class ConsultarCita extends javax.swing.JFrame {
         initComponents();
         queFechaEsHoy();
         cargarTabla();
+        
+        Toolkit toolkit = getToolkit();
+        Dimension tamanyo = toolkit.getScreenSize();
+        setLocation(tamanyo.width / 2 - getWidth() / 2, tamanyo.height / 2 - getHeight() / 2);
     }
     private void queFechaEsHoy()
     {
@@ -56,10 +62,13 @@ public class ConsultarCita extends javax.swing.JFrame {
         fechaDeHoy = new javax.swing.JLabel();
         proximaConsultaTxt = new javax.swing.JTextField();
         btnGuardarCita = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaCita = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
+        lblIdCita = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Citas médicas");
@@ -84,10 +93,23 @@ public class ConsultarCita extends javax.swing.JFrame {
             }
         });
 
+        botonEliminar.setText("Eliminar cita");
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(112, Short.MAX_VALUE)
+                .addComponent(botonEliminar)
+                .addGap(18, 18, 18)
+                .addComponent(btnGuardarCita)
+                .addGap(21, 21, 21))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -103,11 +125,7 @@ public class ConsultarCita extends javax.swing.JFrame {
                     .addComponent(nombreMedicoTxt)
                     .addComponent(fechaDeHoy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(proximaConsultaTxt))
-                .addContainerGap(106, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGuardarCita)
-                .addGap(21, 21, 21))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +151,9 @@ public class ConsultarCita extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(proximaConsultaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGuardarCita)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardarCita)
+                    .addComponent(botonEliminar))
                 .addGap(22, 22, 22))
         );
 
@@ -173,12 +193,15 @@ public class ConsultarCita extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         jLabel2.setText("Citas médicas");
 
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/expedienteiconos/Button-Previous-icon.png"))); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
+
+        jLabel7.setText("ID seleccionado:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,11 +213,17 @@ public class ConsultarCita extends javax.swing.JFrame {
                 .addGap(325, 325, 325))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblIdCita, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegresar))
                 .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
@@ -206,9 +235,16 @@ public class ConsultarCita extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblIdCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRegresar)))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         pack();
@@ -235,7 +271,7 @@ public class ConsultarCita extends javax.swing.JFrame {
         try {
             con = Conexion.getConexion();
             ps = con.prepareStatement("SELECT idCita, nombreMedico, fechaActual, fechaProxima, nombreCliente, telefonoCliente FROM CitaMedica");
-
+            
             rs = ps.executeQuery();
             rsmd = rs.getMetaData();
             columnas = rsmd.getColumnCount();
@@ -283,7 +319,41 @@ public class ConsultarCita extends javax.swing.JFrame {
 
     private void tablaCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCitaMouseClicked
         // TODO add your handling code here:
+        try {
+            int fila = tablaCita.getSelectedRow();
+            int id = Integer.parseInt(tablaCita.getValueAt(fila, 0).toString());
+            
+            Connection con = Conexion.getConexion();
+            PreparedStatement ps = con.prepareStatement("SELECT idCita FROM CitaMedica WHERE idCita = ?");
+            
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {                
+                lblIdCita.setText(String.valueOf(id));
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_tablaCitaMouseClicked
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(lblIdCita.getText().toString());
+        
+        try {
+            Connection con = Conexion.getConexion();
+            PreparedStatement ps = con.prepareStatement("DELETE FROM CitaMedica WHERE idCita = ?");
+            
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "La cita id:" + id + " ha sido eliminada");
+            cargarTabla();
+            lblIdCita.setText("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }//GEN-LAST:event_botonEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,6 +391,7 @@ public class ConsultarCita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonEliminar;
     private javax.swing.JButton btnGuardarCita;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel fechaDeHoy;
@@ -330,8 +401,10 @@ public class ConsultarCita extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblIdCita;
     private javax.swing.JTextField nombreClienteTxt;
     private javax.swing.JTextField nombreMedicoTxt;
     private javax.swing.JTextField proximaConsultaTxt;

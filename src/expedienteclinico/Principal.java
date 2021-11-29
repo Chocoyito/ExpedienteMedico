@@ -5,6 +5,8 @@
  */
 package expedienteclinico;
 
+import formularios.PaginaPrincipal;
+
 /**
  *
  * @author Josar

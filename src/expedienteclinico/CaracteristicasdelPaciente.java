@@ -4,6 +4,9 @@
  */
 package expedienteclinico;
 
+import dao.Conexion;
+import formularios.CreacionExpediente;
+import formularios.PaginaPrincipal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

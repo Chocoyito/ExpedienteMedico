@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package expedienteclinico;
+package formularios;
 
+import dao.Conexion;
+import formularios.PaginaPrincipal;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -72,7 +74,6 @@ public class ConsultarCita extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Citas médicas");
-        setPreferredSize(new java.awt.Dimension(867, 742));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Creación de citas"));
 
